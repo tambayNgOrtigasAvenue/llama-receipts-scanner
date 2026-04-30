@@ -57,6 +57,21 @@ JSON format:
 
 JSON:"""
 
+response_format = {
+    "type": "json_object",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "Merchant Name": {"type": "string"},
+            "Expense Category": {"type": "string"},
+            "Transaction Date": {"type": "string", "format": "date"},
+            "Total Amount": {"type": "number", "format": "float"},
+            "Currency": {"type": "string"},
+            "Payment Method": {"type": "string"},
+            "Items": {"type": "object",}
+        }
+    }
+}
 # ============================
 # 3. CORE FUNCTIONS
 # ============================
