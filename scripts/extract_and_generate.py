@@ -55,12 +55,13 @@ JSON format:
     "category": "food/groceries/transport/etc or null"
 }}
 
-JSON:"""
+JSON:
+"""
 
 response_format = {
-    "type": "json_object",
+    "format": "json",
     "schema": {
-        "type": "object",
+        "type": "array",
         "properties": {
             "Merchant Name": {"type": "string"},
             "Expense Category": {"type": "string"},
@@ -72,6 +73,24 @@ response_format = {
         }
     }
 }
+
+message_list = [
+    {
+        "role": "system",
+        "content": """
+                    You are a precise receipt data extractor where I will give a task to extract the texts from an image of receipts,
+                    follow the instructions and the requirements, and return the data in the form of JSON.            
+                     """
+    },
+    {
+        "role": "user",
+        "content": """
+                    Compile those data you extracted from receipts and export it into .csv file.
+                    After that, .csv file must contain the following: sum of expenses with weekly and monthly report,
+                    interpretation of the data, and recommendations based on the data with advice.
+                    """
+    }
+]
 # ============================
 # 3. CORE FUNCTIONS
 # ============================
